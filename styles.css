@@ -86,7 +86,7 @@ a:hover {
   cursor: pointer;
 }
 
-.hamburger-icon div {
+.hamburger-icon span {
   width: 100%;
   height: 2px;
   background-color: black;
@@ -103,3 +103,258 @@ a:hover {
   overflow: hidden; /* hides the menu links */
   transition: all 0.3s ease-in-out;
 }
+
+.menu-links a {
+    display:block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-links li {
+    list-style: none; /*removes the bullet points*/
+}
+
+.menu-links.open{
+    max-height: 300px; /*displays the menu links*/
+}
+
+.hamburger-icon.open span:first-child{
+    transform: rotate(45deg) translate(10px, 5px); /*rotates the line 45 degrees and translates it 10px to the right and 5px down*/
+}
+
+.hamburger-icon.open span:nth-chil(2){
+    opacity: 0; /*hides the middle line*/
+}
+
+.hamburger-icon.open span:first-child{
+    transform: rotate(-45deg) translate(10px, -5px); /*rotates the line 45 degrees and translates it 10px to the right and 5px up*/
+}
+
+.hamburger-icon span:first-child{
+    transform:none; /*resets the rotation and translation of the first line*/
+}
+
+.hamburger-icon span:first-child{
+    opacity: 1; /*displays the middle line*/
+}
+
+.hamburger-icon span:first-child{
+    transform:none; /*resets the rotation and translation of the last line*/
+}
+
+/* SECTIONS */
+
+section {
+    padding-top: 4vh; /*adds padding to the top of the section*/
+    height: 96vh;
+    margin: 0 10rem; /*adds margin to the left and right of the section*/
+    box-sizing: border-box; /*includes padding and border in the element's total width and height*/
+    min-height: fit-content; /*sets the minimum height of the section to fit its content*/
+}
+
+.section-container {
+    display: flex;
+}
+
+/* PROFILE SECTION */
+
+#profile{
+    display: flex;
+    justify-content: center;
+    gap: 5rem; /*adds a gap between the image and the text*/
+    height: 80vh;
+}
+
+.section__pic-container{
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto 0; /*centers the image*/
+}
+
+.section__text{
+    align-self: center; /*aligns the text to the center*/
+    text-align: center;
+}
+
+.section__text p{
+    font-weight: 600;
+}
+
+.section__text__p1{
+    text-align: center;
+}
+
+.section__text__p2{
+    font-size: 1.75rem;
+    margin-bottom: 1rem; /*adds margin to the bottom of the text*/
+}
+
+.title{
+    font-size: 3rem;
+    text-align: center; /*aligns the text to the center*/
+}
+
+#socials-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem; /*adds margin to the top of the socials container*/
+    gap: 1rem; /*adds a gap between the socials*/
+}
+
+/* ICONS */
+
+.icon{
+    cursor: pointer;
+    height: 2rem;
+}
+
+/* BUTTONS */
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /*adds a gap between the buttons*/
+}
+
+.btn{
+    font-weight: 600;
+    transition: all 300ms ease; /*transitions all properties with a 300ms ease effect*/
+    padding: 1rem;
+    width: 8rem; /*sets the width of the button*/
+    border-radius: 2rem;
+}
+
+.btn-color-1,
+.btn-color-2{
+    border: rgb(53,53,53) 0.1rem solid;
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover{
+    cursor:pointer;
+}
+
+.btn-color-1,
+.btn-color-2:hover{
+    cursor:pointer;
+    background: rgb(53,53,53);
+    color: white;
+}
+
+.btn-color-1:hover{
+    background: rgb(0,0,0);
+}
+
+.btn-color-2{
+    background: none;
+}
+
+.btn-color-2:hover{
+    border: rgb(255,255,255) 0.1rem solid;
+}
+
+.btn-container{
+    gap: 1rem; /*adds a gap between the buttons*/
+}
+
+/* ABOUT SECTION */
+
+#about {
+    position: relative; /*allows the about section to be positioned relative to the parent element*/
+}
+
+.about-containers{
+    gap:2rem; /*adds a gap between the containers*/
+    margin-bottom: 2rem; /*adds margin to the bottom of the containers*/
+    margin-top: 2rem; /*adds margin to the top of the containers*/
+}
+
+.about-details-container{
+    justify-content: center;
+    flex-direction: column; /*stacks the elements vertically*/
+}
+
+.about-containers, .about-details-container{
+    display: flex;
+}
+
+.about-pic {
+    border-radius: 2rem;
+}
+
+.arrow{
+    position: absolute; /*allows the arrow to be positioned relative to the parent element*/
+    right: -5rem; /*positions the arrow 5rem to the right of the parent element*/
+    bottom: 2.5rem; /*positions the arrow 2.5rem from the bottom of the parent element*/
+}
+
+.details-container{
+    padding: 1.5rem;
+    flex: 1; /*takes up the remaining space*/
+    background: white;
+    border-radius: 2rem;
+    border: rgb(53,53,53) 0.1rem solid;
+    border-color: rgb(163,163,163);
+    text-align: center;
+}
+
+.section-container{
+    gap: 4rem; /*adds a gap between the sections*/
+    height: 80%; /*takes 80% of the viewport height*/
+}
+
+.section__pic-container{
+    height: 400px;
+    width: 400px;
+    margin: auto 0; /*centers the image*/
+}
+
+/* EXPERIENCE SECTION */
+
+#experience {
+    position: relative; /*allows the experience section to be positioned relative to the parent element*/
+}
+
+.experience-sub-title {
+    color: rgb(85, 85, 85);
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+.experience-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article-container {
+    display: flex;
+    text-align: initial; /*aligns the text to the left*/
+    flex-wrap: wrap; /*wraps the elements to the next line*/
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: space-around; /*adds space around the elements*/
+}
+
+article {
+    display: flex;
+    width: 10rem;
+    justify-content: space-around; /*adds space around the elements*/
+    gap: 0.5rem;
+}
+
+.icon {
+    cursor: default;
+}
+
+/* Add specific styles for the arrow icon if needed */
+/*.icon.arrow {
+    cursor: pointer;
+    margin-top: 2rem; /* Adjust as needed to position the arrow */
+
