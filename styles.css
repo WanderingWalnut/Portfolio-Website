@@ -171,9 +171,14 @@ section {
 
 .section__pic-container{
     display: flex;
+    flex-direction: column;
     height: 400px;
     width: 400px;
     margin: auto 0; /*centers the image*/
+}
+
+.note{
+    margin-left: 60px;
 }
 
 .section__text{
@@ -354,6 +359,10 @@ article {
 
 .icon {
     cursor: default;
+}
+
+.adjusted-lang{
+    margin-right: 50px;
 }
 
 /* Add specific styles for the arrow icon if needed */
