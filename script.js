@@ -15,10 +15,34 @@ function textTypingEffect(element, text, i = 0) {
 
     if (i < text.length) {
         element.innerText += text[i];
-        setTimeout(() => textTypingEffect(element, text, i + 1), 200); // Adjust the timeout to slow down the typing effect
+        setTimeout(() => textTypingEffect(element, text, i + 1), 250); // Adjust the timeout to slow down the typing effect
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    textTypingEffect(div, text);
+    if (div) {
+        textTypingEffect(div, text);
+    }
+    
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.classList.add('fade-in-section');
+        observer.observe(section);
+    });
 });
