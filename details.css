@@ -171,3 +171,13 @@
 .campus-browser { height: calc(100% - 104px); }
 .campus-capture { height: calc(100% - 13px); object-fit: cover; object-position: top; }
 .project-resources a { min-height: 24px; }
+
+/* Keep the intro's reading rhythm and inline marks close to the reference. */
+.intro .bio { font-size: 16px; line-height: 1.5; letter-spacing: 0; text-wrap: pretty; }
+.intro .inline-brand { display: inline; white-space: normal; }
+.intro .brand-tail { white-space: nowrap; }
+.intro .inline-brand .brand-icon { display: inline-block; width: 18px; height: 18px; margin: 0 1px 0 5px; vertical-align: -3px; }
+.intro .secondary-bio { margin-top: 16px; font-size: 15px; line-height: 1.6; }
+@media (max-width: 809px) {
+  .intro .bio:not(.secondary-bio) { text-wrap: balance; }
+}
