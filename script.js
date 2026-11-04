@@ -75,3 +75,39 @@ systemTheme.addEventListener("change", (event) => {
   try { if (localStorage.getItem("theme")) return; } catch {}
   applyTheme(event.matches ? "dark" : "light");
 });
+
+const soccerVideo = document.querySelector("#soccer-video");
+const videoToggle = document.querySelector(".video-toggle");
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+let soccerPausedByUser = reducedMotion.matches;
+
+function updateVideoControl() {
+  const playing = !soccerVideo.paused;
+  videoToggle.setAttribute("aria-pressed", String(playing));
+  videoToggle.setAttribute("aria-label", playing ? "Pause soccer video" : "Play soccer video");
+}
+
+function playSoccer() {
+  soccerVideo.play().catch(updateVideoControl);
+}
+
+videoToggle.addEventListener("click", () => {
+  soccerPausedByUser = !soccerVideo.paused;
+  if (soccerVideo.paused) playSoccer();
+  else soccerVideo.pause();
+});
+soccerVideo.addEventListener("play", updateVideoControl);
+soccerVideo.addEventListener("pause", updateVideoControl);
+new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting && !soccerPausedByUser && !document.hidden) playSoccer();
+  else soccerVideo.pause();
+}, { threshold: 0.25 }).observe(soccerVideo);
+reducedMotion.addEventListener("change", (event) => {
+  if (event.matches) {
+    soccerPausedByUser = true;
+    soccerVideo.pause();
+  }
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) soccerVideo.pause();
+});
