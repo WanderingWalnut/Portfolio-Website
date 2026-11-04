@@ -1,48 +1,56 @@
-function toggleMenu() {
-    const menu = document.querySelector(".menu-links"); // select the menu-links class
-    const icon = document.querySelector(".hamburger-icon"); // select the hamburger-icon class
-    menu.classList.toggle("open"); // toggle the open class on the menu
-    icon.classList.toggle("open"); // toggle the open class on the icon
+const email = "nkprimary1@gmail.com";
+const toast = document.querySelector("#toast");
+let toastTimer;
+
+function showToast(message) {
+  clearTimeout(toastTimer);
+  toast.textContent = message;
+  toast.classList.add("visible");
+  toastTimer = setTimeout(() => toast.classList.remove("visible"), 2500);
 }
 
-const div = document.querySelector(".title");
-const text = "Naveed"; // Ensure the space is included between first and last name
-
-function textTypingEffect(element, text, i = 0) {
-    if (i === 0) {
-        element.innerText = ""; // Clear text initially
-    }
-
-    if (i < text.length) {
-        element.innerText += text[i];
-        setTimeout(() => textTypingEffect(element, text, i + 1), 250); // Adjust the timeout to slow down the typing effect
-    }
+async function copyEmail() {
+  try {
+    await navigator.clipboard.writeText(email);
+    showToast("Email copied. Say hello!");
+  } catch {
+    showToast(email);
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (div) {
-        textTypingEffect(div, text);
-    }
-    
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('fade-in-section');
-        observer.observe(section);
-    });
+document.querySelector(".copy-email").addEventListener("click", copyEmail);
+document.addEventListener("keydown", (event) => {
+  if (event.key.toLowerCase() !== "c" || event.ctrlKey || event.metaKey || event.altKey || event.repeat) return;
+  if (event.target.closest("input, textarea, select, [contenteditable]")) return;
+  if (window.getSelection()?.toString()) return;
+  copyEmail();
 });
+
+function updateClock() {
+  const now = new Date();
+  document.querySelector("#clock").textContent = `${now.toISOString().slice(11, 19)} UTC`;
+  document.querySelector("#clock").dateTime = now.toISOString();
+  document.querySelector("#year").textContent = now.getFullYear();
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+const dockLinks = [...document.querySelectorAll('.dock a[href^="#"]')];
+const sections = dockLinks.map((link) => document.querySelector(link.getAttribute("href")));
+let scrollPending = false;
+function updateActiveSection() {
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+  const current = atBottom ? sections.at(-1) : sections.filter((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.4).at(-1) || sections[0];
+  for (const link of dockLinks) {
+    if (link.getAttribute("href") === `#${current.id}`) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
+  scrollPending = false;
+}
+window.addEventListener("scroll", () => {
+  if (!scrollPending) {
+    scrollPending = true;
+    requestAnimationFrame(updateActiveSection);
+  }
+}, { passive: true });
+updateActiveSection();
