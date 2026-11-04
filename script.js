@@ -28,7 +28,7 @@ document.addEventListener("keydown", (event) => {
 
 function updateClock() {
   const now = new Date();
-  document.querySelector("#clock").textContent = `${now.toISOString().slice(11, 19)} UTC`;
+  document.querySelector("#clock").textContent = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23", timeZoneName: "short" }).format(now);
   document.querySelector("#clock").dateTime = now.toISOString();
   document.querySelector("#year").textContent = now.getFullYear();
 }
@@ -54,3 +54,24 @@ window.addEventListener("scroll", () => {
   }
 }, { passive: true });
 updateActiveSection();
+
+const themeToggle = document.querySelector(".theme-toggle");
+const systemTheme = matchMedia("(prefers-color-scheme: dark)");
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === "dark";
+  themeToggle.setAttribute("aria-pressed", String(dark));
+  themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  themeToggle.querySelector(".tooltip").textContent = dark ? "Light mode" : "Dark mode";
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#0d0d0d" : "#ffffff";
+}
+applyTheme(document.documentElement.dataset.theme);
+themeToggle.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(theme);
+  try { localStorage.setItem("theme", theme); } catch {}
+});
+systemTheme.addEventListener("change", (event) => {
+  try { if (localStorage.getItem("theme")) return; } catch {}
+  applyTheme(event.matches ? "dark" : "light");
+});
