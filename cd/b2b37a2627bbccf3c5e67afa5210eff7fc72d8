@@ -1,0 +1,59 @@
+assets/icons/SOURCES.md
+  s_dc4eecc5f2ae61::t_22a214e2f408ac 8-10
+assets/icons/anthropic.svg
+  s_dc4eecc5f2ae61::t_a090cff525dc90 1
+assets/icons/apacheflink.svg
+  s_dc4eecc5f2ae61::t_83b35fd2e093e2 1
+assets/icons/aws.svg
+  s_dc4eecc5f2ae61::t_e932e99ca385f5 1-4
+assets/icons/azure.svg
+  s_dc4eecc5f2ae61::t_9d0aca06ffaa88 1
+assets/icons/claude.svg
+  s_dc4eecc5f2ae61::t_4ba4746a1ecf5a 1
+assets/icons/cursor.svg
+  s_dc4eecc5f2ae61::t_15fc6739ec7f23 1
+assets/icons/docker.svg
+  s_dc4eecc5f2ae61::t_36362ef393de6f 1
+assets/icons/fastapi.svg
+  s_dc4eecc5f2ae61::t_910186ff9b8f25 1
+assets/icons/gcp.svg
+  s_dc4eecc5f2ae61::t_0672da6aef4015 1
+assets/icons/github.svg
+  s_dc4eecc5f2ae61::t_5c79a126cbca85 1
+assets/icons/graphql.svg
+  s_dc4eecc5f2ae61::t_ad8461cb99fe5b 1
+assets/icons/kafka.svg
+  s_dc4eecc5f2ae61::t_9f128783656da8 1
+assets/icons/kubernetes.svg
+  s_dc4eecc5f2ae61::t_b1d6c461b93163 1
+assets/icons/linkedin.svg
+  s_dc4eecc5f2ae61::t_e2c528d1af4e7a 1
+assets/icons/nextjs.svg
+  s_dc4eecc5f2ae61::t_f0b4c581a68f83 1
+assets/icons/openai.svg
+  s_dc4eecc5f2ae61::t_9429871858c461 1-3
+assets/projects/SOURCES.md
+  s_dc4eecc5f2ae61::t_54e9c85e98b1ef 1-9
+details.css
+  s_dc4eecc5f2ae61::t_7bb1a53c202bae 1-173
+index.html
+  s_dc4eecc5f2ae61::t_f4ad5a1d341034 16,31-32,47-52,54-57,59-63,65-68,71-76,96,98-104,106
+script.js
+  s_dc4eecc5f2ae61::t_42c6cfa2323aae 78-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cdb2b37a2627bbccf3c5e67afa5210eff7fc72d8",
+  "prompts": {},
+  "sessions": {
+    "s_dc4eecc5f2ae61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a467-32dc-7b51-9268-d785cd16c91b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "WanderingWalnut <naveed.khan1@ucalgary.ca>"
+    }
+  }
+}
