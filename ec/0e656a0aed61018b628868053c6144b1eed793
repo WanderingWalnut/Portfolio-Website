@@ -1,0 +1,21 @@
+assets/icons/SOURCES.md
+  s_dc4eecc5f2ae61::t_ecaf467aef2795 11-12
+index.html
+  s_dc4eecc5f2ae61::t_bbbe18516d5bcd 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ec0e656a0aed61018b628868053c6144b1eed793",
+  "prompts": {},
+  "sessions": {
+    "s_dc4eecc5f2ae61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a467-32dc-7b51-9268-d785cd16c91b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "WanderingWalnut <naveed.khan1@ucalgary.ca>"
+    }
+  }
+}
