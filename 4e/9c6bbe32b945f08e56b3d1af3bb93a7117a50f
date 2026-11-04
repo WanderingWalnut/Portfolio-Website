@@ -1,0 +1,39 @@
+assets/icons/SOURCES.md
+  s_dc4eecc5f2ae61::t_9f8f95e4497e45 1-7
+assets/icons/kotlin.svg
+  s_dc4eecc5f2ae61::t_a1a04a5154a7b5 1-10
+assets/icons/postgresql.svg
+  s_dc4eecc5f2ae61::t_03998eb78fa124 1
+assets/icons/python.svg
+  s_dc4eecc5f2ae61::t_774a859042e3a4 1
+assets/icons/rails.svg
+  s_dc4eecc5f2ae61::t_9c569e3575977e 1
+assets/icons/react.svg
+  s_dc4eecc5f2ae61::t_d3a9a1b9c7def5 1
+assets/icons/shopify.svg
+  s_dc4eecc5f2ae61::t_d77ec65be846a5 1
+assets/icons/typescript.svg
+  s_dc4eecc5f2ae61::t_85e3370fe2ee1f 1
+index.html
+  s_dc4eecc5f2ae61::t_1f0ce17daf5e67 7,28-29,32,38,79-81,92,99
+script.js
+  s_dc4eecc5f2ae61::t_bebf5f52df0a98 31,57-77
+styles.css
+  s_dc4eecc5f2ae61::t_88912e0a0a148c 1-2,4-5,7-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4e9c6bbe32b945f08e56b3d1af3bb93a7117a50f",
+  "prompts": {},
+  "sessions": {
+    "s_dc4eecc5f2ae61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a467-32dc-7b51-9268-d785cd16c91b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "WanderingWalnut <naveed.khan1@ucalgary.ca>"
+    }
+  }
+}
