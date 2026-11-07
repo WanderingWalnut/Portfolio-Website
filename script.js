@@ -18,7 +18,9 @@ async function copyEmail() {
   }
 }
 
-document.querySelector(".copy-email").addEventListener("click", copyEmail);
+for (const button of document.querySelectorAll(".copy-email, .contact-copy")) {
+  button.addEventListener("click", copyEmail);
+}
 document.addEventListener("keydown", (event) => {
   if (event.key.toLowerCase() !== "c" || event.ctrlKey || event.metaKey || event.altKey || event.repeat) return;
   if (event.target.closest("input, textarea, select, [contenteditable]")) return;
@@ -30,7 +32,6 @@ function updateClock() {
   const now = new Date();
   document.querySelector("#clock").textContent = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23", timeZoneName: "short" }).format(now);
   document.querySelector("#clock").dateTime = now.toISOString();
-  document.querySelector("#year").textContent = now.getFullYear();
 }
 updateClock();
 setInterval(updateClock, 1000);
@@ -111,3 +112,56 @@ reducedMotion.addEventListener("change", (event) => {
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) soccerVideo.pause();
 });
+
+
+const stackTrack = document.querySelector(".stack-track");
+const stackCopy = stackTrack.firstElementChild.cloneNode(true);
+stackCopy.classList.add("stack-copy");
+stackCopy.setAttribute("aria-hidden", "true");
+stackTrack.append(stackCopy);
+stackTrack.closest(".stack-rail").classList.add("is-looping");
+
+if (!reducedMotion.matches) {
+  const signature = document.querySelector(".footer-signature");
+  signature.classList.add("signature-ready");
+  const observer = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    signature.classList.add("is-drawing");
+    observer.disconnect();
+  }, { threshold: 0.55 });
+  observer.observe(signature);
+}
+
+const torontoWeather = document.querySelector('.footer-weather');
+const weatherTemperature = torontoWeather.querySelector('span');
+
+async function updateTorontoWeather() {
+  try {
+    const endpoint = 'https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current=temperature_2m,weather_code,is_day';
+    const response = await fetch(endpoint, { signal: AbortSignal.timeout(5500) });
+    if (!response.ok) return;
+    const { current } = await response.json();
+    const temperature = current?.temperature_2m;
+    if (!Number.isFinite(temperature)) return;
+    const conditions = [
+      [0, 'Clear', current.is_day ? 'sun' : 'moon'],
+      [2, 'Partly cloudy', 'cloud'],
+      [3, 'Overcast', 'cloud'],
+      [48, 'Fog', 'cloud'],
+      [69, 'Rain', 'rain'],
+      [79, 'Snow', 'snow'],
+      [84, 'Rain showers', 'rain'],
+      [86, 'Snow showers', 'snow'],
+      [99, 'Thunderstorms', 'rain'],
+    ];
+    const [, condition, icon] = conditions.find(([max]) => current.weather_code <= max) ?? [0, 'Current conditions', 'cloud'];
+    weatherTemperature.textContent = `${Math.round(temperature)} °C`;
+    torontoWeather.querySelector('use').setAttribute('href', `#i-${icon}`);
+    torontoWeather.title = `${condition} in Toronto · Open-Meteo`;
+    torontoWeather.setAttribute('aria-label', `Toronto weather, ${weatherTemperature.textContent}, ${condition}. Data by Open-Meteo.`);
+  } catch {
+    // Keep the city and weather link available when the service cannot be reached.
+  }
+}
+
+updateTorontoWeather();
