@@ -1,0 +1,25 @@
+index.html
+  s_dc4eecc5f2ae61::t_926444eb1137be 48-52,115-145,155-163,165-176
+  s_dc4eecc5f2ae61::t_e300979208d996 62
+script.js
+  s_dc4eecc5f2ae61::t_926444eb1137be 21-23,115-167
+details.css
+  s_dc4eecc5f2ae61::t_926444eb1137be 75-95,97-152,154-164
+  s_dc4eecc5f2ae61::t_e300979208d996 153
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "25cc8b06dfaf37f018baf1d0ef056015ff7090d9",
+  "prompts": {},
+  "sessions": {
+    "s_dc4eecc5f2ae61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a467-32dc-7b51-9268-d785cd16c91b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "WanderingWalnut <naveed.khan1@ucalgary.ca>"
+    }
+  }
+}
