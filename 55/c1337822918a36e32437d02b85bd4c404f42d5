@@ -1,0 +1,19 @@
+index.html
+  s_dc4eecc5f2ae61::t_2a53e053bd7735 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "55c1337822918a36e32437d02b85bd4c404f42d5",
+  "prompts": {},
+  "sessions": {
+    "s_dc4eecc5f2ae61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a467-32dc-7b51-9268-d785cd16c91b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "WanderingWalnut <naveed.khan1@ucalgary.ca>"
+    }
+  }
+}
